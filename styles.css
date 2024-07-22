@@ -1,65 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: black;
+    background-color: #222;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
+    animation: backgroundAnimation 10s infinite alternate;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: #333;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 2s ease-out;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 3em;
+    color: #f0f0f0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: headingAnimation 2s ease-out;
 }
 
 #sudoku-container {
     display: grid;
-    grid-template-columns: repeat(5, 40px);
-    grid-gap: 20px;
-    padding: 40px;
-    padding-right: 50px;
-    background-color: black;
-    border: 2px solid white;
+    grid-template-columns: repeat(5, 50px);
+    grid-gap: 4px;
+    background-color: #222;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 10px;
     margin: 20px 0;
+    animation: gridAnimation 2s ease-in-out;
+}
+
+#sudoku-container:hover {
+    background-color: #444;
+    animation: gridHover 0.5s ease-in-out;
 }
 
 input[type="text"] {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    font-size: 18px;
-    background-color: black;
-    border: 2px solid white;
+    font-size: 20px;
+    background-color: #333;
+    border: 2px solid #777;
+    border-radius: 4px;
     color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    animation: inputAnimation 1s ease-in-out;
+}
+
+input[type="text"]:focus {
+    background-color: #555;
+    border-color: #aaa;
+    outline: none;
+    animation: inputFocus 0.3s ease-in-out;
+}
+
+input[type="text"]:invalid {
+    border-color: #f00;
 }
 
 .buttons {
     margin: 20px 0;
+    animation: buttonsAnimation 2s ease-out;
 }
 
 button {
-    margin: 0 10px;
+    margin: 5px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: white;
-    color: black;
+    background-color: #555;
+    color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    animation: buttonAnimation 1.5s ease-in-out;
 }
 
 button:hover {
-    background-color: lightgray;
+    background-color: #777;
+    animation: buttonHover 0.3s ease-in-out;
+}
+
+button:active {
+    transform: scale(0.98);
+    animation: buttonActive 0.1s ease;
 }
 
 #message {
     margin-top: 20px;
+    font-size: 1.2em;
+    opacity: 0;
+    animation: messageAnimation 2s ease-out forwards;
 }
 
-h1{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 50px;
+@keyframes backgroundAnimation {
+    0% { background-color: #222; }
+    100% { background-color: #444; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes headingAnimation {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gridAnimation {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes gridHover {
+    from { background-color: #222; }
+    to { background-color: #444; }
+}
+
+@keyframes inputAnimation {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes inputFocus {
+    from { background-color: #333; }
+    to { background-color: #555; }
+}
+
+@keyframes buttonsAnimation {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes buttonAnimation {
+    0% { background-color: #555; }
+    50% { background-color: #666; }
+    100% { background-color: #555; }
+}
+
+@keyframes buttonHover {
+    from { background-color: #555; }
+    to { background-color: #777; }
+}
+
+@keyframes buttonActive {
+    from { transform: scale(1); }
+    to { transform: scale(0.98); }
+}
+
+@keyframes messageAnimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
